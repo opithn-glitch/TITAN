@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>TITAN CAFE | Gaming & Coffee</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --red:#c41432;
+    --gold:#d6ad54;
+    --black:#090909;
+    --card:#151515;
+    --white:#f5f1e9;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {scroll-behavior:smooth}
+
+body {
+    background:var(--black);
+    color:var(--white);
+    font-family:'Cairo',sans-serif;
+    overflow-x:hidden;
+}
+
+a {text-decoration:none;color:inherit}
+
+header {
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(5,5,5,.92);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(214,173,84,.25);
+}
+
+nav {
+    max-width:1200px;
+    margin:auto;
+    padding:15px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo {
+    color:var(--gold);
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.logo span {color:var(--red)}
+
+nav ul {
+    display:flex;
+    list-style:none;
+    gap:23px;
+}
+
+nav ul a {
+    font-size:14px;
+    transition:.3s;
+}
+
+nav ul a:hover {color:var(--gold)}
+
+.hero {
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 70px;
+    background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.9)),
+    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1800') center/cover;
+    position:relative;
+}
+
+.hero:after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle,transparent 20%,#000 100%);
+    pointer-events:none;
+}
+
+.hero-content {
+    position:relative;
+    z-index:2;
+}
+
+.hero h1 {
+    font-size:clamp(65px,12vw,125px);
+    font-weight:900;
+    color:white;
+    text-shadow:0 0 35px #c41432;
+    letter-spacing:8px;
+}
+
+.hero h1 span {color:var(--red)}
+
+.hero h2 {
+    color:var(--gold);
+    font-size:22px;
+    margin:10px 0;
+}
+
+.hero p {
+    color:#ccc;
+    max-width:650px;
+    margin:20px auto 30px;
+    line-height:2;
+}
+
+.btn {
+    display:inline-block;
+    padding:13px 30px;
+    margin:6px;
+    border-radius:5px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.btn-red {
+    background:var(--red);
+    color:white;
+    box-shadow:0 0 20px #c4143260;
+}
+
+.btn-gold {
+    border:1px solid var(--gold);
+    color:var(--gold);
+}
+
+.btn:hover {
+    transform:translateY(-5px);
+    box-shadow:0 0 25px #c4143270;
+}
+
+section {
+    padding:85px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title {
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title small {
+    color:var(--red);
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.section-title h2 {
+    font-size:36px;
+    color:var(--gold);
+    margin-top:8px;
+}
+
+.section-title p {
+    color:#999;
+    margin-top:8px;
+}
+
+.about-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:center;
+}
+
+.about-grid img {
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid #49351b;
+}
+
+.about-text h3 {
+    font-size:27px;
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.about-text p {
+    color:#bbb;
+    line-height:2.2;
+}
+
+.features {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    margin-top:30px;
+}
+
+.feature {
+    background:linear-gradient(145deg,#191919,#0d0d0d);
+    border:1px solid #30251a;
+    padding:25px;
+    text-align:center;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.feature:hover {
+    border-color:var(--red);
+    transform:translateY(-7px);
+}
+
+.feature .icon {
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.feature h3 {
+    color:var(--gold);
+    margin-bottom:8px;
+}
+
+.feature p {
+    color:#aaa;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.menu-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.menu-card {
+    background:var(--card);
+    border:1px solid #30251a;
+    border-radius:12px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.menu-card:hover {
+    transform:translateY(-5px);
+    border-color:var(--red);
+}
+
+.menu-head {
+    background:linear-gradient(90deg,#7e071d,#c41432);
+    padding:15px;
+    text-align:center;
+    font-size:21px;
+    font-weight:900;
+    color:white;
+}
+
+.menu-items {padding:18px}
+
+.menu-item {
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid #292929;
+    font-size:14px;
+}
+
+.menu-item:last-child {border:0}
+
+.price {
+    color:var(--gold);
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.note {
+    color:#888;
+    font-size:12px;
+    margin-top:12px;
+}
+
+.juice-box {
+    margin-top:35px;
+    background:linear-gradient(120deg,#24050c,#151515);
+    border:1px solid var(--red);
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+}
+
+.juice-box h3 {
+    color:var(--gold);
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.juice-list {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:20px 0;
+}
+
+.juice-list span {
+    padding:12px 20px;
+    background:#242424;
+    border:1px solid #49351b;
+    border-radius:30px;
+}
+
+.gaming {
+    max-width:none;
+    background:#101010;
+}
+
+.gaming-inner {
+    max-width:1200px;
+    margin:auto;
+}
+
+.gaming-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:22px;
+}
+
+.game-card {
+    background:#171717;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #38251c;
+    transition:.3s;
+}
+
+.game-card:hover {
+    transform:scale(1.025);
+    border-color:var(--gold);
+}
+
+.game-card img {
+    width:100%;
+    height:210px;
+    object-fit:cover;
+}
+
+.game-info {padding:20px}
+
+.game-info h3 {
+    color:var(--gold);
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.game-info p {
+    color:#aaa;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.vip {
+    background:
+    linear-gradient(#000b,#000e),
+    url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=1500') center/cover;
+    max-width:none;
+    text-align:center;
+}
+
+.vip-inner {
+    max-width:900px;
+    margin:auto;
+}
+
+.vip h2 {
+    color:var(--gold);
+    font-size:40px;
+}
+
+.vip p {
+    color:#ddd;
+    line-height:2;
+    margin:20px 0;
+}
+
+.gallery-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.gallery-grid img {
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:.4s;
+    border:1px solid #333;
+}
+
+.gallery-grid img:hover {
+    transform:scale(1.04);
+    border-color:var(--gold);
+}
+
+.contact {
+    text-align:center;
+    background:#111;
+    max-width:none;
+}
+
+.contact-inner {
+    max-width:900px;
+    margin:auto;
+}
+
+.contact h2 {
+    color:var(--gold);
+    font-size:35px;
+}
+
+.contact p {
+    color:#aaa;
+    margin:15px 0 25px;
+    line-height:2;
+}
+
+.contact-links {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+footer {
+    padding:25px;
+    background:#050505;
+    text-align:center;
+    color:#777;
+    border-top:1px solid #392918;
+}
+
+footer strong {color:var(--gold)}
+
+@media(max-width:750px) {
+    nav {
+        flex-direction:column;
+        gap:12px;
+    }
+
+    nav ul {
+        gap:13px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    nav ul a {font-size:12px}
+
+    .about-grid {grid-template-columns:1fr}
+
+    .hero h1 {letter-spacing:3px}
+
+    .section-title h2 {font-size:29px}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">TITAN<span>.</span></div>
+
+    <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">عن تيتان</a></li>
+        <li><a href="#menu">المنيو</a></li>
+        <li><a href="#gaming">الألعاب</a></li>
+        <li><a href="#vip">VIP</a></li>
+        <li><a href="#contact">تواصل</a></li>
+    </ul>
+</nav>
+</header>
+
+<!-- HERO -->
+
+<div class="hero" id="home">
+<div class="hero-content">
+
+    <h1>TITAN<span>.</span></h1>
+
+    <h2>COFFEE • GAMING • VIP</h2>
+
+    <p>
+        مو مجرد كوفي... عالم ثاني من المتعة والتحدي.
+        استمتع بأطيب المشروبات والأكلات، وخوض أقوى تجارب
+        الألعاب داخل صالة TITAN.
+    </p>
+
+    <a href="#menu" class="btn btn-red">اكتشف المنيو</a>
+    <a href="#gaming" class="btn btn-gold">اكتشف عالم الألعاب</a>
+
+</div>
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-title">
+<small>WELCOME TO TITAN</small>
+<h2>أهلاً بيك بعالم TITAN</h2>
+<p>مكان يجمع القهوة والأكل والألعاب بمكان واحد</p>
+</div>
+
+<div class="about-grid">
+
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1000" alt="Coffee">
+
+    <div class="about-text">
+        <h3>تجربة مختلفة تماماً</h3>
+
+        <p>
+        في TITAN نهتم بالتفاصيل.
+        من المشروبات والأكلات اللذيذة إلى أجواء الألعاب
+        والتحدي، وفرنالك مكان تستمتع بيه ويا أصدقائك.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="icon">☕</div>
+                <h3>كوفي</h3>
+                <p>مشروبات وأكلات متنوعة</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">🎮</div>
+                <h3>Gaming</h3>
+                <p>أحدث أجهزة الألعاب</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</section>
+
+<!-- MENU -->
+
+<section id="menu">
+
+<div class="section-title">
+<small>TITAN MENU</small>
+<h2>قائمة TITAN</h2>
+<p>اختار طلبك واستمتع بالطعم</p>
+</div>
+
+<div class="menu-grid">
+
+<!-- CREPE -->
+<div class="menu-card">
+<div class="menu-head">🥞 الكريب</div>
+<div class="menu-items">
+
+<div class="menu-item"><span>كريب نوتيلا</span><span class="price">3,000</span></div>
+<div class="menu-item"><span>كريب فواكه</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>كريب أوريو</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>كريب لوتس</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>كريب بستاشيو</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>كريب مكسرات</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>كريب كندر</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>كريب تيتان</span><span class="price">4,000</span></div>
+
+</div>
+</div>
+
+<!-- WAFFLE -->
+<div class="menu-card">
+<div class="menu-head">🧇 وافل</div>
+<div class="menu-items">
+
+<div class="menu-item"><span>وافل نوتيلا</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>وافل فواكه</span><span class="price">4,000</span></div>
+<div class="menu-item"><span>وافل كندر</span><span class="price">4,000</span></div>
+<div class="menu-item"><span>وافل أوريو</span><span class="price">4,000</span></div>
+<div class="menu-item"><span>وافل مكسرات</span><span class="price">4,000</span></div>
+<div class="menu-item"><span>وافل أصابع</span><span class="price">4,000</span></div>
+<div class="menu-item"><span>وافل تيتان</span><span class="price">4,000</span></div>
+
+</div>
+</div>
+
+<!-- PANCAKE -->
+<div class="menu-card">
+<div class="menu-head">🥞 بان كيك</div>
+<div class="menu-items">
+
+<div class="menu-item"><span>لوتس</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>أوريو</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>نوتيلا</span><span class="price">3,500</span></div>
+<div class="menu-item"><span>كندر</span><span class="price">3,500</span></div>
+
+</div>
+</div>
+
+<!-- SMOOTHIE -->
+<div class="menu-card">
+<div class="menu-head">🥤 سموذي</div>
+<div class="menu-items">
+
+<div class="menu-item"><span>سموذي فراولة</span><span class="price">2,000</span></div>
+<div class="menu-item"><span>سموذي منجا</span><span class="price">2,000</span></div>
+<div class="menu-item"><span>سموذي كيوي</span><span class="price">2,000</span></div>
+<div class="menu-item"><span>سموذي بطيخ</span><span class="price">2,000</span></div>
+
+</div>
+</div>
+
+<!-- MOJITO -->
+<div class="menu-card">
+<div class="menu-head">🍹 موهيتو</div>
+<div class="menu-items">
+
+<div class="menu-item"><span>موهيتو بلو بيري</span><span class="price">1,500</span></div>
+<div class="menu-item"><span>موهيتو فراولة</span><span class="price">1,500</span></div>
+<div class="menu-item"><span>موهيتو كيوي</span><span class="price">1,500</span></div>
+<div class="menu-item"><span>موهيتو ليمون نعناع</span><span class="price">1,500</span></div>
+<div class="menu-item"><span>موهيتو جوز الهند</span><span class="price">1,500</span></div>
+<div class="menu-item"><span>موهيتو كرمل</span><span class="price">1,500</span></div>
+<div class="menu-item"><span>موهيتو بلو كوراساو</span><span class="price">1,500</span></div>
+<div class="menu-item"><span>موهيتو تيتان</span><span class="price">1,500</span></div>
+
+</div>
+</div>
+
+<!-- FRUITS -->
+<div class="menu-card">
+<div class="menu-head">🍓 فواكه</div>
+<div class="menu-items">
+
+<div class="menu-item"><span>طبق فواكه وسط</span><span class="price">3,000</span></div>
+<div class="menu-item"><span>طبق فواكه كبير</span><span class="price">5,000</span></div>
+<div class="menu-item"><span>أناناس</span><span class="price">1,000</span></div>
+
+</div>
+</div>
+
+<!-- SOFT DRINKS -->
+<div class="menu-card">
+<div class="menu-head">🥫 مشروبات غازية</div>
+<div class="menu-items">
+
+<div class="menu-item"><span>بيبسي - سفن - ميرندا</span><span class="price">500</span></div>
+<div class="menu-item"><span>تايكر</span><span class="price">1,000</span></div>
+<div class="menu-item"><span>تايكر مكسيكي</span><span class="price">2,000</span></div>
+<div class="menu-item"><span>بيركان</span><span class="price">1,000</span></div>
+
+</div>
+</div>
+
+</div>
+
+<!-- NATURAL JUICES -->
+
+<div class="juice-box">
+    <h3>🍊 العصائر الطبيعية الطازجة</h3>
+
+    <p>نحضّر عصيرك طازج وبالطريقة اللي تحبها</p>
+
+    <div class="juice-list">
+        <span>🍋 ليمون</span>
+        <span>🍊 برتقال</span>
+        <span>❤️ رمان</span>
+        <span>🍌 موز</span>
+        <span>🥤 مكس عصائر</span>
+    </div>
+
+    <p>
+        اطلب المكس على ذوقك واختار النكهات اللي تحبها!
+    </p>
+</div>
+
+</section>
+
+<!-- GAMING -->
+
+<div class="gaming" id="gaming">
+<div class="gaming-inner">
+
+<section>
+
+<div class="section-title">
+<small>ENTER THE GAME</small>
+<h2>عالم TITAN GAMING</h2>
+<p>جهّز نفسك للمنافسة والتحدي</p>
+</div>
+
+<div class="gaming-grid">
+
+<div class="game-card">
+<img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=900" alt="PlayStation">
+<div class="game-info">
+<h3>PlayStation 5</h3>
+<p>عيش تجربة ألعاب الجيل الجديد مع PS5 وأجواء تنافسية مميزة.</p>
+</div>
+</div>
+
+<div class="game-card">
+<img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=900" alt="Xbox">
+<div class="game-info">
+<h3>Xbox Series X</h3>
+<p>قوة الأداء وتجربة ألعاب ممتعة مع أجهزة Xbox Series.</p>
+</div>
+</div>
+
+<div class="game-card">
+<img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=900" alt="Gaming Room">
+<div class="game-info">
+<h3>Gaming Zone</h3>
+<p>أجواء ألعاب مميزة ومكان يجمعك بأصدقائك.</p>
+</div>
+</div>
+
+<div class="game-card">
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900" alt="Gaming">
+<div class="game-info">
+<h3>GTA VI</h3>
+<p>استمتع بتجربة عالم GTA VI داخل صالة TITAN، حسب توفر اللعبة والجهاز.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+</div>
+</div>
+
+<!-- VIP -->
+
+<div class="vip" id="vip">
+<div class="vip-inner">
+
+<h2>👑 TITAN VIP ROOMS</h2>
+
+<p>
+تريد خصوصية وأجواء مختلفة؟
+غرف VIP مصممة حتى تستمتع بوقتك
+ويا أصدقائك بعيداً عن الإزعاج.
+</p>
+
+<a href="#contact" class="btn btn-red">استفسر عن الحجز</a>
+
+</div>
+</div>
+
+<!-- GALLERY -->
+
+<!-- TITAN REAL GALLERY -->
+
+<section id="gallery">
+
+<style>
+.titan-gallery {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:18px;
+}
+
+.titan-photo {
+    position:relative;
+    overflow:hidden;
+    height:320px;
+    border-radius:14px;
+    border:1px solid #5a2028;
+    background:#111;
+    cursor:pointer;
+}
+
+.titan-photo img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .7s;
+}
+
+.titan-photo:hover img {
+    transform:scale(1.12);
+}
+
+.titan-photo::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent 55%,rgba(0,0,0,.85));
+}
+
+.photo-caption {
+    position:absolute;
+    bottom:15px;
+    right:15px;
+    z-index:2;
+    color:#e3bd68;
+    font-size:17px;
+    font-weight:900;
+}
+
+.titan-video {
+    width:100%;
+    max-width:850px;
+    display:block;
+    margin:40px auto 0;
+    border:2px solid #a80d29;
+    border-radius:15px;
+    box-shadow:0 0 35px #a80d2940;
+}
+
+.gallery-label {
+    text-align:center;
+    color:#aaa;
+    margin:10px 0 30px;
+}
+</style>
+
+<div class="section-title">
+    <small>REAL TITAN EXPERIENCE</small>
+    <h2>صور من داخل TITAN</h2>
+    <p>هاي مو صور توضيحية... هاي أجواء TITAN الحقيقية</p>
+</div>
+
+<div class="titan-gallery">
+
+    <div class="titan-photo">
+        <img src="images/titan-welcome.jpg" alt="مدخل TITAN">
+        <div class="photo-caption">مرحباً بيك في TITAN</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/titan-balloons.jpg" alt="ديكور TITAN">
+        <div class="photo-caption">أجواء TITAN</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/titan-entrance.jpg" alt="مدخل الألعاب">
+        <div class="photo-caption">TITAN GAMING</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/titan-entrance-2.jpg" alt="ديكور المدخل">
+        <div class="photo-caption">عيش التجربة</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/titan-interior.jpg" alt="داخل الكوفي">
+        <div class="photo-caption">TITAN INTERIOR</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/gaming-room-1.jpg" alt="صالة الألعاب">
+        <div class="photo-caption">Gaming Zone</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/gaming-room-2.jpg" alt="أجهزة الألعاب">
+        <div class="photo-caption">PlayStation Zone</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/gaming-room-3.jpg" alt="أجهزة الألعاب">
+        <div class="photo-caption">Game On</div>
+    </div>
+
+    <div class="titan-photo">
+        <img src="images/titan-screen.jpg" alt="شاشة TITAN">
+        <div class="photo-caption">Entertainment</div>
+    </div>
+
+</div>
+
+<div class="section-title" style="margin-top:65px">
+    <small>WATCH TITAN</small>
+    <h2>شاهد أجواء المكان 🎬</h2>
+    <p>جولة مصورة داخل TITAN</p>
+</div>
+
+<video class="titan-video"
+       controls
+       playsinline
+       preload="metadata"
+       poster="images/titan-welcome.jpg">
+
+    <source src="videos/titan-video.mp4" type="video/mp4">
+
+    متصفحك لا يدعم تشغيل الفيديو.
+
+</video>
+
+</section>
+
+<!-- CONTACT -->
+
+<div class="contact" id="contact">
+<div class="contact-inner">
+
+<h2>تواصل ويانه</h2>
+
+<p>
+ننتظركم في TITAN.
+للحجز والاستفسار تابعونا على صفحاتنا.
+</p>
+
+<div class="contact-links">
+
+<a class="btn btn-red"
+href="https://wa.me/9647838673129"
+target="_blank">
+واتساب
+</a>
+
+<a class="btn btn-gold"
+href="https://www.instagram.com/titan_.games"
+target="_blank">
+Instagram
+</a>
+
+</div>
+
+</div>
+</div>
+
+<footer>
+<p>
+© 2026 <strong>TITAN CAFE</strong> —
+COFFEE • GAMING • VIP
+</p>
+<p>كل الحقوق محفوظة</p>
+</footer>
+
+</body>
+</html>
